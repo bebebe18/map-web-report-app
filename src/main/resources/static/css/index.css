@@ -1,0 +1,59 @@
+
+.blue-bg{
+	color: #fff;
+	background: #57889c;
+	background-color: #57889c;
+}
+
+.green-bg {
+    color: #fff;
+    background: #26c281;
+    background-color: rgb(38, 194, 129);
+    background-color: #26c281;
+}
+
+.dark-bg {
+    color: #fff;
+    background: #1a2732;
+    background-color: rgb(26, 39, 50);
+    background-color: #1a2732;
+}
+
+.soft-blue-bg {
+    color: #fff;
+    background: #00CED1;
+    background-color: #00CED1;
+}
+
+.info-box{
+	min-height: 140px;
+	margin-bottom: 30px;
+	padding: 20px;
+}
+
+.info-box .count {
+    margin-top: 20px;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.info-box .title {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: right;
+}
+
+.info-box i {
+    display: block;
+    height: 30px;
+    font-size: 30px;
+    line-height: 30px;
+    width: 30px;
+    float: left;
+    text-align: center;
+    margin-right: 20px;
+    padding-right: 20px;
+    color: rgba(255, 255, 255, 0.75);
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- <html xmlns:th="http://www.thymeleaf.org"> -->
+<!-- <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags" lang="en"> -->
+<!-- <html xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4"> -->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4"  lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<div th:fragment="header">
+		<!-- Icon -->
+		<link rel="shortcut icon" type="image/png" th:href="@{/image/map_logo.png}"/>
+		
+		<!-- Bootstrap core CSS-->
+  		<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+  
+  		<!-- Custom fonts for this template-->
+  		<link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+  
+  		<!-- Page level plugin CSS-->
+  		<link th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet"/>
+  
+  		<!-- Custom styles for this template-->
+  		<link th:href="@{/css/sb-admin.css}" rel="stylesheet"/>
+		
+		<!-- Custom styles myNavigation -->
+		<link th:href="@{/css/myNavigation.css}" rel="stylesheet"/>
+	</div>
+</head>
+<body>
+	<div class="row">
+		<div th:fragment="myNavigation">
+			<!-- Navigation -->
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" id="mainNav">
+			    <a class="navbar-brand" th:href="@{/}"><img th:src="@{/image/map_logo.png}"/></a>
+
+			    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarResponsive">
+			      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+			        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+			          <a class="nav-link" th:href="@{/}">
+			            <i class="fa fa-fw fa-dashboard"></i>
+			            <span class="nav-link-text">Dashboard</span>
+			          </a>
+			        </li>
+			        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Transaction By Channel">
+			          <a class="nav-link" th:href="@{/TransactionsByChannel}">
+			            <i class="fa fa-fw fa-dollar"></i>
+			            <span class="nav-link-text">Transaction By Channel</span>
+			          </a>
+			        </li>
+					<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Return By Channel">
+			          <a class="nav-link" th:href="@{/ReturnsByChannel}">
+			            <i class="fa fa-fw fa-exchange"></i>
+			            <span class="nav-link-text">Return By Channel</span>
+			          </a>
+			        </li>
+			        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')" data-toggle="tooltip" data-placement="right" title="Manage User">
+			          <a class="nav-link" th:href="@{/ManageUser}">
+			            <i class="fa fa-fw fa-user"></i>
+			            <span class="nav-link-text">Manage User</span>
+			          </a>
+			        </li>
+			        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sign Out">
+			          <a class="nav-link" th:href="@{/logout}">
+			            <i class="fa fa-fw fa-sign-out"></i>
+			            <span class="nav-link-text">Sign Out</span>
+			          </a>
+			        </li>
+			      </ul>
+			      <ul class="navbar-nav sidenav-toggler">
+			        <li class="nav-item">
+			          <a class="nav-link text-center" id="sidenavToggler">
+			            <i class="fa fa-fw fa-angle-left"></i>
+			            Menu
+			          </a>
+			        </li>
+			      </ul>
+
+			    </div>
+			  </nav>
+		</div>
+	</div>
+	
+	<div th:fragment="footer">
+		<div class="container">
+        	<div class="text-center">
+          		<small>Mitra Adiperkasa - 2018</small>
+        	</div>
+      	</div>
+   	
+      	<!-- Bootstrap core JavaScript-->
+	    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	    
+	    <!-- Core plugin JavaScript-->
+	    <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+	    
+	    <!-- Page level plugin JavaScript -->
+	    <script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
+	    <script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+	    <script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+	   
+	    
+	    <!-- Custom scripts for all pages-->
+	    <script th:src="@{/js/sb-admin.min.js}"></script>
+	</div>
+</body>
+</html>

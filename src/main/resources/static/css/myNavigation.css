@@ -1,0 +1,18 @@
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link{
+	color: white;
+	border: 1px solid #212529;
+	border-radius: 5px;
+	padding: 15px;
+	background-color: #212529;
+}
+
+#mainNav .navbar-collapse .navbar-sidenav > .nav-item{
+	width: 240px;
+	padding: 0;
+	margin-bottom: 5px;
+}
+
+#mainNav .navbar-brand{
+	width: 75px;
+}

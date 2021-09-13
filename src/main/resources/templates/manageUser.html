@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<title>MAP Web Report</title>
+	<meta charset="utf-8"/>
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  	<meta name="description" content=""/>
+  	<meta name="author" content=""/>
+  	
+  	<th:block th:include="fragment/myNavigation::header"></th:block>
+	
+	<!-- Referring to Bootstrap-datepicker CSS-->
+	<link th:href="@{/date-picker/css/bootstrap-datepicker.css}" rel="stylesheet"/>
+	
+	<!-- Sweet Alert 2 -->
+    <link th:href="@{/sweet_alert2/sweetalert2.min.css}" rel="stylesheet"/>
+    <!-- Select2 -->
+    <link th:href="@{/select2/dist/css/select2.min.css}" rel="stylesheet"/>
+    <!-- DataTables -->
+    <link th:href="@{/datatables.net-bs/css/dataTables.bootstrap.min.css}" rel="stylesheet"/>
+	
+</head>
+<body class="sticky-footer sidenav-toggled bg-dark" id="page-top">
+	<th:block th:include="fragment/myNavigation::myNavigation"></th:block>
+	
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Start of Transactions By Channel Report -->
+			<div class="card mb-3">
+				<div class="card-header">
+					<h3>Create New User</h3>
+				</div>
+			  	<div id="panelreport" class="card-body">
+		  				<div class="box-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label for="inpUserName" class="col-sm-12 control-label">User Name: </label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="inpUserName" maxlength="100"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="inpName" class="col-sm-12 control-label">Name: </label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="inpName" maxlength="100"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="inpRole" class="col-sm-12 control-label">Role: </label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="inpRole">
+                                            <option value="0">-Select  Role-</option>
+                                            <option th:each="role : ${roles}" th:value="${role.roleId}" th:text="${role.RoleName}">Admin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="filterRoleId" class="col-sm-12 control-label">Company: </label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control select2" multiple="multiple" id="inpComp">
+                                            <option value="ALL">ALL</option>
+                                            <option th:each="company:${companies}" th:text="${company.companyCode} +' - ' +${company.companyName}" th:value="${company.companyCode}">company</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-12" align="right" style="margin-top: 15px;">
+                                <div class="col-sm-3 col-sm-offset-9">
+                                    <table class="table table-bordered text-center">
+                                        <tbody><tr>
+                                            <td>
+                                                <button type="button" class="btn bg-maroon" onclick="onClearRegClick()">
+                                                    <i class="fa fa-eraser"></i>  <b>CLEAR</b>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-block btn-warning" onclick="onRegClick()">
+                                                    <i class="fa fa-search"></i>  <b>REGISTER</b>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+			  	</div>
+			</div>
+			<!-- End of Transactions By Channel Report -->
+			<!-- Start of Transaction Details By Channel Report -->
+			<div class="card mb-3">
+				<div class="card-header">
+					<h3>List User</h3>
+				</div>
+			  	<div id="tableListUser" class="card-body">
+		  			<div class="row">
+		                <div class="col-md-12">
+		                    <div class="box box-solid">
+		                        <div class="box-body">
+		                        	<div class="row">
+						                <div class="col-md-12">
+						                    <div class="box box-solid">
+						                        <div class="box-header with-border">
+						                            <h4 class="box-title">Filter</h4>
+						                        </div>
+						                        <div class="box-body">
+						                            <div class="row">
+						                                <div class="col-sm-3">
+						                                    <label for="filterUserName" class="col-sm-12 control-label">User Name: </label>
+						                                    <div class="col-sm-12">
+						                                        <input type="text" class="form-control" id="filterUserName" maxlength="100"/>
+						                                    </div>
+						                                </div>
+						                                <div class="col-sm-3">
+						                                    <label for="filterName" class="col-sm-12 control-label">Name: </label>
+						                                    <div class="col-sm-12">
+						                                        <input type="text" class="form-control" id="filterName" maxlength="100"/>
+						                                    </div>
+						                                </div>
+						                                <div class="col-sm-3">
+						                                    <label for="filterRoleId" class="col-sm-12 control-label">Role: </label>
+						                                    <div class="col-sm-12">
+						                                        <select class="form-control" id="filterRoleId">
+						                                            <option value="0">-Select  Role-</option>
+						                                            <option th:each="role : ${roles}" th:value="${role.roleId}" th:text="${role.RoleName}">Admin</option>
+						                                        </select>
+						                                    </div>
+						                                </div>
+						                                <div class="col-sm-3 col-sm-offset-9">
+					                                        <table class="table table-bordered text-center">
+					                                            <tbody><tr>
+					                                                <td>
+					                                                    <button type="button" class="btn bg-maroon" onclick="onClearClick()">
+					                                                        <i class="fa fa-eraser"></i>  <b>CLEAR</b>
+					                                                    </button>
+					                                                </td>
+					                                                <td>
+					                                                    <button type="button" class="btn btn-block btn-warning" onclick="onFilterUserClick()">
+					                                                        <i class="fa fa-search"></i>  <b>FILTER</b>
+					                                                    </button>
+					                                                </td>
+					                                            </tr>
+					                                            </tbody>
+					                                        </table>
+					                                    </div>
+						                            </div>
+						                        </div>
+						                    </div>
+						                </div>
+						            </div>
+		                            <div class="row">
+		                                <div class="col-md-12">
+		                                    <table class="table table-striped" style="width: 1000px;" id="user-list-table">
+		                                        <thead>
+		                                        <tr>
+		                                            <th>User name</th>
+		                                            <th>Name</th>
+		                                            <th>Role</th>
+		                                            <th>Company</th>
+		                                            <th>Command</th>
+		                                        </tr>
+		                                        </thead>
+		                                    </table>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+            		</div>	
+			  	</div>
+			</div>
+			<!-- End of Transaction Details By Channel Report -->
+		</div>
+	</div>
+	
+	<footer class="sticky-footer">
+		<!-- Java Script Here -->
+		<th:block th:include="fragment/myNavigation::footer"></th:block>
+		
+		<!-- Referring to Bootstrap-datepicker js-->
+		<script th:src="@{/date-picker/js/bootstrap-datepicker.js}"></script>
+		<script th:src="@{/date-picker/js/bootstrap-datepicker.min.js}"></script>
+		
+		<!-- Sweet Alert 2 Script -->
+	    <script th:src="@{/sweet_alert2/sweetalert2.min.js}"></script>
+	    <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+	    <script th:src="@{/sweet_alert2/sweetalert2_optional.js}"></script>
+	
+	    <!-- Select2 -->
+	    <script th:src="@{/select2/dist/js/select2.full.min.js}"></script>
+	    
+	    <!-- DataTables -->
+	    <script th:src="@{/datatables.net/js/jquery.dataTables.min.js}"></script>
+	    <script th:src="@{/datatables.net-bs/js/dataTables.bootstrap.min.js}"></script>
+	    
+		<!-- Referring manageUser.js -->
+		<script type="text/javascript" th:src="@{/js/manageUser.js}"></script>
+	</footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+	
+</body>
+</html>

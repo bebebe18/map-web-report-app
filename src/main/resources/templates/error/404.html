@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>&#9679; 404 Not Found</title>
+		<style>
+			div{
+				height: 400px;
+				width: 400px;
+				backgroud: #D3D3D3;
+			    position: fixed;
+			    top: 50%;
+			    left: 50%;
+			    margin-top: -100px;
+			    margin-left: -200px;
+			    font-family: Tahoma;
+			    text-align: center;
+			}
+			p{
+				color: #A9A9A9;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>404 Not Found!</h1>
+			<p th:text="${message}"></p>
+		</div>		
+	</body>
+</html>

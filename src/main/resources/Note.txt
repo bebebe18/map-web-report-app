@@ -1,0 +1,3 @@
+Note:
+Things to changes before move to production
+1. templates/fragment/myNavigation.html

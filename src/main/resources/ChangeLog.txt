@@ -1,0 +1,41 @@
+Change log:
+
+
+15 Nov 2018
+*) Sales Detail and Return Detail Report add column E-Commerce Order ID
+
+05 Nov 2018
+*) Model -> add company 
+*) Common Service -> add company 
+*) Transaction By Channel -> add filter store
+*) Return By Channel -> add filter store
+
+
+31 Oct 2018
+*) Change Chart Controller -> sort value by Channel name through TreeMap object
+*) Add BorderColor
+*) Change index-chart.min.js -> color get from json key borderColors
+
+24 Oct 2018
+*) Add filter company to returnByChannel and transactionByChannel
+*) Report details sales and return add warehouse column
+
+16 Oct 2018
+*) index-chart.min.js -> (tooltips) add thousand separator to bar chart (Net Amount By Channels - Year To Date) and lines chart (Net Amount By Channels - YTD Grouped by Month)
+*) index-chart.min.js -> (tooltips) add thousand separator to pie chart (Number of Transaction By Channels - Year To Date)
+*) fix Async Log4j -> add this dependency: com.lmax
+*) index-chart.min.js -> lines chart (Net Amount By Channels - YTD Grouped by Month) change hover style.
+
+19 Sep 2018
+*) Change Store Procedure Usp_GenO2OByMonth to generate Index Chart
+*) Generate Complete Transaction. OrderStatus = 13
+
+18 Sep 2018
+*) myNavigation.html hyperlink using thymeleaf
+*) do not need to change end point before deploy
+
+11 Aug 2018
+*) Add Channel filter to Report: Sales Transactions, Sales Transaction Details, Return Transactions, Return Transaction Detials.
+
+10 Aug 2018
+*) Change SQL Server connection object to local.
